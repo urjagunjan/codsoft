@@ -213,11 +213,11 @@ if __name__ == '__main__':
     doc = load_doc(CAPTIONS_FILE)
     descriptions = load_descriptions(doc)
     clean_descriptions(descriptions)
-    train_descriptions = {k: v for k, v in descriptions.items() if k in load_set(TRAIN_FILE)}
-    print('Descriptions: train=%d' % len(train_descriptions))
-
-    train_features = {k: features[k] for k in train_descriptions.keys()}
-    print('Photos: train=%d' % len(train_features))
+    train = list(load_set(TRAIN_FILE))
+    train = train[:1000]
+    print(f'Descriptions: train={len(train)} (using subset of 1000 images)')
+    train_descriptions = load_clean_descriptions('descriptions.txt', train)
+    print(f'Photos with descriptions: {len(train_descriptions)}')
 
     tokenizer = create_tokenizer(train_descriptions)
     with open(TOKENIZER_FILE, 'wb') as f:
