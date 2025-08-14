@@ -1,6 +1,7 @@
-tensorflow
-keras
-pillow
-numpy
-matplotlib
-tqdm
+tensorflow>=2.0.0
+numpy>=1.19.5
+pillow>=8.0.0
+matplotlib>=3.3.0
+tqdm>=4.50.0
+h5py>=2.10.0
+scikit-learn>=0.24.0
